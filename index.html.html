@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <!-- Meta & SEO -->
@@ -12,18 +13,22 @@
   <meta name="geo.placename" content="Pakistan" />
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://growzio.com/books" />
-  
+
   <!-- Preconnects -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
   <!-- Favicon -->
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 
   <!-- Libraries -->
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -38,12 +43,15 @@
       }
     }
   </script>
+
   <script src="https://unpkg.com/scrollreveal"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <!-- JSON-LD Structured Data -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -864,29 +872,6 @@
       font-size: 1rem;
     }
     
-    /* Product Detail Modal Close Button */
-    .modal-close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #666;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-    
-    .modal-close-btn:hover {
-      background: rgba(0,0,0,0.1);
-      color: #333;
-    }
-    
     /* Scroll to Top and Bottom Buttons */
     .scroll-to-top {
       position: fixed;
@@ -1000,10 +985,12 @@
       }
     }
   </style>
+
 </head>
 <body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
 
   <!-- Navbar -->
+
   <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
     <div class="container py-3 flex items-center justify-between">
       <a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="font-extrabold text-xl text-white flex items-center no-select">
@@ -1050,6 +1037,7 @@
   </header>
 
   <!-- Offer Timer Banner -->
+
   <div class="offer-timer text-white text-center py-3 px-4">
     <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
       <span class="font-bold text-lg animate-pulse">30% OFF ON ALL BOOKS - ENDING SOON!</span>
@@ -1077,11 +1065,11 @@
   </div>
 
   <!-- Cart Modal - Full Screen -->
+
   <dialog id="cart-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('cart-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    
     <div class="container mx-auto py-6 px-4 h-full flex flex-col">
       <div class="cart-modal-header">
         <h2 class="text-2xl font-bold text-secondary">YOUR CART</h2>
@@ -1120,12 +1108,12 @@
   </dialog>
 
   <!-- Added to Cart Modal -->
+
   <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
     <div class="text-center">
       <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
       <h2 class="text-xl font-bold mb-2">Book Added to Cart!</h2>
       <p class="text-gray-600 mb-6" id="added-item-name">Your book has been successfully added to your cart.</p>
-      
       <div class="flex justify-center gap-4">
         <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
         <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
@@ -1134,21 +1122,22 @@
   </dialog>
 
   <!-- Product Detail Modal -->
-  <dialog id="product-detail-modal" class="rounded-xl p-6 bg-white text-dark w-full shadow-xl">
-    <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').close()">
+
+  <dialog id="product-detail-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+    <button class="cart-modal-close" onclick="document.getElementById('product-detail-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    <div id="product-detail-content" class="mt-4">
+    <div id="product-detail-content" class="mt-4 container mx-auto py-6 px-4 h-full overflow-y-auto">
       <!-- Product details will be inserted here -->
     </div>
   </dialog>
 
   <!-- Privacy Policy Modal -->
+
   <dialog id="privacy-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('privacy-policy-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    
     <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
       <h1 class="section-title mb-4">Privacy Policy</h1>
       <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
@@ -1213,11 +1202,11 @@
   </dialog>
 
   <!-- Terms of Service Modal -->
+
   <dialog id="terms-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('terms-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    
     <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
       <h1 class="section-title mb-4">Terms of Service</h1>
       <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
@@ -1312,11 +1301,11 @@
   </dialog>
 
   <!-- Refund Policy Modal -->
+
   <dialog id="refund-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('refund-policy-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    
     <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
       <h1 class="section-title mb-4">Refund Policy</h1>
       <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
@@ -1430,6 +1419,7 @@
   </dialog>
 
   <!-- Main Website Content -->
+
   <div id="main-content">
     <!-- Hero -->
     <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
@@ -1441,7 +1431,6 @@
           <span class="gradient-text">Premium Digital Books</span> in Pakistan at Lowest Prices
         </h1>
         <p class="section-subtitle text-gray-200" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get 100% genuine eBooks, programming guides, business books, and self-help resources. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
-
         <!-- Trust badges -->
         <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <div class="trust-badge float-animation">
@@ -1595,6 +1584,7 @@
   </div>
 
   <!-- Payment Page (initially hidden) -->
+
   <div id="payment-page" class="hidden">
     <!-- Header -->
     <header class="header bg-secondary">
@@ -1602,7 +1592,6 @@
         <a href="#" class="font-extrabold text-xl text-white flex items-center">
           <span class="text-primary mr-1">📚</span> GROWZIO BOOKS
         </a>
-        
         <div class="flex items-center gap-4">
           <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
@@ -2429,5 +2418,6 @@ document.querySelectorAll('img').forEach(img => {
 /* Init cart badge */
 updateCartDisplays();
 </script>
+
 </body>
 </html>
