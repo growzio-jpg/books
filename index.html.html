@@ -18,6 +18,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
@@ -29,10 +32,16 @@
       theme: {
         extend: {
           colors: {
-            primary: '#CC5500',
-            secondary: '#005F73',
-            dark: '#0a0a0a',
-            lightbg: '#F8F9FA'
+            primary: '#0A1A2F',
+            secondary: '#F5F1E8',
+            accent: '#CC5500',
+            success: '#228B22',
+            'text-primary': '#1A1A1A',
+            'text-secondary': '#666666'
+          },
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            'serif': ['Source Serif Pro', 'Times New Roman', 'serif']
           }
         }
       }
@@ -68,13 +77,13 @@
   <style>
     /* Global */
     :root {
-      --primary: #CC5500;       /* Burnt Orange for interactive elements */
-      --primary-dark: #A04300;  /* Darker shade for hover states */
-      --secondary: #005F73;     /* Deep Teal for headers, footers */
-      --secondary-dark: #004953; /* Darker teal */
-      --dark: #0a0a0a;          /* Keeping dark for text */
-      --light-bg: #F8F9FA;      /* Light off-white for backgrounds */
-      --light-text: #FFFFFF;    /* White for text on dark backgrounds */
+      --primary: #0A1A2F;       /* Deep Navy */
+      --secondary: #F5F1E8;     /* Warm Cream */
+      --accent: #CC5500;        /* Burnt Orange */
+      --success: #228B22;       /* Forest Green */
+      --text-primary: #1A1A1A;
+      --text-secondary: #666666;
+      --light-bg: #F8F9FA;
     }
     
     * {
@@ -85,10 +94,10 @@
     
     body { 
       scroll-behavior: smooth; 
-      background-color: var(--light-bg);
-      color: #333;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
+      background-color: var(--secondary);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
     }
     
     img { 
@@ -98,7 +107,7 @@
     }
     
     h1, h2, h3, h4 {
-      color: var(--secondary);
+      color: var(--primary);
       line-height: 1.3;
       font-weight: 700;
     }
@@ -116,7 +125,7 @@
     
     .line-clamp-2 {
       display: -webkit-box;
-      -webkit-line-ramp: 2;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -127,7 +136,7 @@
     
     .btn {
       display: inline-block;
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
@@ -139,22 +148,32 @@
     }
     
     .btn:hover {
-      background: var(--primary-dark);
+      background: #A04300;
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(204, 85, 0, 0.2);
     }
     
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
+      border: 2px solid var(--accent);
+      color: var(--accent);
     }
     
     .btn-outline:hover {
-      background: var(--primary);
+      background: var(--accent);
       color: white;
     }
     
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: var(--primary);
+      color: white;
+    }
+
     /* Code Protection Styles */
     .no-select {
       -webkit-user-select: none;
@@ -179,7 +198,7 @@
       height: 60px;
       bottom: 20px;
       right: 20px;
-      background: #25D366; /* Changed to green */
+      background: #25D366;
       color: #fff;
       border-radius: 50px;
       text-align: center;
@@ -208,13 +227,13 @@
 
     /* Navbar */
     .nav-link { 
-      color: var(--light-text); 
+      color: var(--secondary); 
       text-decoration: none;
       transition: all 0.3s ease;
     }
     
     .nav-link:hover { 
-      color: var(--primary); 
+      color: var(--accent); 
     }
 
     /* Mobile menu */
@@ -257,13 +276,13 @@
       transform: translateX(-50%);
       width: 80px;
       height: 4px;
-      background: var(--primary);
+      background: var(--accent);
       border-radius: 2px;
     }
     
     .section-subtitle {
       text-align: center;
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 3rem;
       max-width: 700px;
       margin-left: auto;
@@ -271,7 +290,7 @@
     }
     
     .trust-badge { 
-      background: rgba(0, 95, 115, 0.1); 
+      background: rgba(10, 26, 47, 0.1); 
       border-radius: 12px; 
       padding: 1.5rem; 
       text-align: center; 
@@ -280,16 +299,16 @@
     
     .trust-badge:hover { 
       transform: translateY(-5px); 
-      background: rgba(0, 95, 115, 0.15); 
+      background: rgba(10, 26, 47, 0.15); 
     }
     
     .testimonial-card { 
       background: linear-gradient(145deg, #f5f5f5, #e6e6e6); 
-      border-left: 4px solid var(--primary); 
+      border-left: 4px solid var(--accent); 
       padding: 1.5rem; 
       border-radius: 8px; 
       height: 100%;
-      color: #333;
+      color: var(--text-primary);
     }
     
     .faq-item { 
@@ -354,7 +373,7 @@
       max-height: 100%;
       overflow-y: auto;
       background: var(--light-bg);
-      color: #333;
+      color: var(--text-primary);
       border-radius: 0;
       padding: 2rem;
       box-shadow: none;
@@ -371,7 +390,7 @@
       max-width: 450px;
       width: 90%;
       background: var(--light-bg);
-      color: #333;
+      color: var(--text-primary);
     }
     
     /* Product Detail Modal */
@@ -385,8 +404,8 @@
       max-width: 100%;
       max-height: 100%;
       overflow-y: auto;
-      background: var(--light-bg);
-      color: #333;
+      background: var(--secondary);
+      color: var(--text-primary);
       border-radius: 0;
       padding: 2rem;
       box-shadow: none;
@@ -407,7 +426,7 @@
       max-height: 100%;
       overflow-y: auto;
       background: var(--light-bg);
-      color: #333;
+      color: var(--text-primary);
       border-radius: 0;
       padding: 2rem;
       box-shadow: none;
@@ -427,7 +446,7 @@
     
     .typewriter {
       overflow: hidden;
-      border-right: .15em solid var(--primary);
+      border-right: .15em solid var(--accent);
       white-space: nowrap;
       margin: 0 auto;
       letter-spacing: .15em;
@@ -441,11 +460,11 @@
     
     @keyframes blink-caret {
       from, to { border-color: transparent }
-      50% { border-color: var(--primary); }
+      50% { border-color: var(--accent); }
     }
     
     .gradient-text {
-      background: linear-gradient(to right, var(--primary), #FF7F40);
+      background: linear-gradient(to right, var(--accent), #FF7F40);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 300% 300%;
@@ -505,7 +524,7 @@
     
     .books-subtitle {
       font-size: 1.2rem;
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 30px;
     }
     
@@ -519,11 +538,11 @@
     }
     
     .book-card {
-      background: linear-gradient(145deg, #F5E6F7, #E8C4F0);
+      background: white;
       border-radius: 16px;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: transform 0.4s, box-shadow 0.4s;
       display: flex;
       flex-direction: column;
@@ -533,7 +552,7 @@
     
     .book-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(10, 26, 47, 0.15);
     }
     
     .book-product-container {
@@ -569,7 +588,7 @@
     
     .book-product-back {
       transform: rotateY(180deg);
-      background: linear-gradient(45deg, var(--secondary), #0080A0);
+      background: linear-gradient(45deg, var(--primary), #1a365d);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -614,7 +633,7 @@
     .book-card h2 {
       font-size: 1.6rem;
       margin: 15px 0;
-      color: var(--secondary);
+      color: var(--primary);
     }
     
     .book-price-container {
@@ -632,7 +651,7 @@
     
     .book-sale-price {
       font-size: 1.4rem;
-      color: var(--primary);
+      color: var(--accent);
       font-weight: bold;
     }
     
@@ -640,7 +659,7 @@
       display: inline-block;
       padding: 14px 30px;
       margin-top: 15px;
-      background: linear-gradient(45deg, var(--primary), #E3712A);
+      background: linear-gradient(45deg, var(--accent), #E3712A);
       color: white;
       font-size: 1.1rem;
       font-weight: bold;
@@ -655,7 +674,7 @@
     .book-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
-      background: linear-gradient(45deg, #E3712A, var(--primary));
+      background: linear-gradient(45deg, #E3712A, var(--accent));
     }
     
     .book-card.flipped .book-product {
@@ -675,7 +694,7 @@
     
     select:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--accent);
       box-shadow: 0 0 0 2px rgba(204, 85, 0, 0.2);
     }
 
@@ -690,7 +709,7 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       border: none;
       display: flex;
@@ -702,7 +721,7 @@
     }
     
     .quantity-btn:hover {
-      background: var(--primary-dark);
+      background: #A04300;
       transform: scale(1.1);
     }
     
@@ -733,17 +752,17 @@
     
     .cart-item-name {
       font-weight: 600;
-      color: var(--secondary);
+      color: var(--primary);
     }
     
     .cart-item-price {
-      color: var(--primary);
+      color: var(--accent);
       font-weight: 600;
     }
     
     .cart-item-total {
       font-weight: 600;
-      color: var(--secondary);
+      color: var(--primary);
     }
     
     .cart-item-controls {
@@ -809,7 +828,7 @@
     
     .price-pkr {
       font-weight: 600;
-      color: var(--primary);
+      color: var(--accent);
     }
     
     .price-usd {
@@ -840,7 +859,7 @@
       right: 20px;
       width: 50px;
       height: 50px;
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -861,7 +880,7 @@
       right: 20px;
       width: 50px;
       height: 50px;
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -884,7 +903,7 @@
     
     .scroll-to-top:hover,
     .scroll-to-bottom:hover {
-      background: var(--primary-dark);
+      background: #A04300;
       transform: translateY(-3px);
     }
     
@@ -892,20 +911,20 @@
     .view-details-btn {
       display: inline-block;
       background: transparent;
-      color: var(--primary);
+      color: var(--accent);
       padding: 0.5rem 1rem;
       border-radius: 6px;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 1px solid var(--primary);
+      border: 1px solid var(--accent);
       cursor: pointer;
       font-size: 0.9rem;
       margin-top: 0.5rem;
     }
     
     .view-details-btn:hover {
-      background: var(--primary);
+      background: var(--accent);
       color: white;
     }
 
@@ -929,9 +948,424 @@
     
     .category-btn.active,
     .category-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    
+    /* Enhanced Book Detail Modal Styles */
+    .book-detail-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .book-detail-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .book-detail-header {
+        flex-direction: row;
+      }
+    }
+    
+    .book-cover-large {
+      flex: 1;
+      position: relative;
+    }
+    
+    .book-cover-large img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .book-badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .bestseller-badge, .discount-badge {
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .bestseller-badge {
+      background: var(--success);
+      color: white;
+    }
+    
+    .discount-badge {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .book-info-main {
+      flex: 2;
+    }
+    
+    .book-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .book-category {
       background: var(--primary);
       color: white;
-      border-color: var(--primary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    
+    .book-rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .stars {
+      color: #FFD700;
+    }
+    
+    .rating-count {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .book-features {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9rem;
+    }
+    
+    .feature i {
+      color: var(--accent);
+    }
+    
+    .pricing-section {
+      margin: 1.5rem 0;
+    }
+    
+    .price-original {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+    
+    .price-current {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    
+    .price-pkr {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    
+    .price-usd {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .action-buttons button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .add-to-cart-large {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+    
+    .add-to-wishlist {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .preview-book {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    
+    .book-detail-tabs {
+      margin-top: 2rem;
+    }
+    
+    .tabs-header {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-btn {
+      padding: 1rem 1.5rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .tab-btn.active {
+      color: var(--accent);
+    }
+    
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .tab-panel {
+      display: none;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    .what-you-get {
+      margin-top: 2rem;
+    }
+    
+    .what-you-get h3 {
+      margin-bottom: 1rem;
+    }
+    
+    .what-you-get ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .what-you-get li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .what-you-get li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+    
+    .book-preview {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .reader-controls {
+      display: flex;
+      gap: 5px;
+    }
+    
+    .reader-btn {
+      background: var(--secondary);
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    .preview-content {
+      font-family: 'Source Serif Pro', serif;
+      line-height: 1.8;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+    
+    .preview-actions {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .reviews-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .reviews-summary {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .average-rating {
+      text-align: center;
+    }
+    
+    .rating-large {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    .stars-large {
+      font-size: 1.5rem;
+      color: #FFD700;
+      margin: 0.5rem 0;
+    }
+    
+    .rating-count {
+      color: var(--text-secondary);
+    }
+    
+    .review-item {
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 0;
+    }
+    
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .verified-badge {
+      background: var(--success);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+    }
+    
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .review-stars {
+      color: #FFD700;
+    }
+    
+    .review-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    .similar-books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .similar-book-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .similar-book-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .similar-book-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+    
+    .similar-book-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .similar-book-price {
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Skeleton Loading */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 4px;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .skeleton-text {
+      height: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skeleton-title {
+      height: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .skeleton-image {
+      height: 200px;
+      margin-bottom: 1rem;
     }
     
     /* Responsive Styles */
@@ -969,50 +1403,68 @@
         width: 100%;
         justify-content: space-between;
       }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .book-detail-header {
+        flex-direction: column;
+      }
+      
+      .book-features {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .reviews-summary {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 
-<body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
+<body class="min-h-screen bg-secondary text-text-primary no-context" oncontextmenu="return false">
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
+  <header class="sticky top-0 z-40 bg-primary backdrop-blur border-b border-accent">
     <div class="container py-3 flex items-center justify-between">
       <a href="#" class="font-extrabold text-xl text-white flex items-center no-select">
-        <span class="text-primary mr-1">📚</span> GROWZIO BOOKS
+        <span class="text-accent mr-1">📚</span> GROWZIO BOOKS
       </a>
 
       <!-- Desktop Nav -->
       <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
-        <a href="#" class="nav-link hover:text-primary no-select">Home</a>
-        <a href="#books" class="nav-link hover:text-primary no-select">Books</a>
-        <a href="#contact" class="nav-link hover:text-primary no-select">Contact</a>
+        <a href="#" class="nav-link hover:text-accent no-select">Home</a>
+        <a href="#books" class="nav-link hover:text-accent no-select">Books</a>
+        <a href="#contact" class="nav-link hover:text-accent no-select">Contact</a>
       </nav>
 
       <!-- Mobile Buttons -->
       <div class="md:hidden flex items-center gap-2">
-        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-accent hover:shadow-sm transition flex items-center gap-2 text-accent hover:bg-accent hover:text-white">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="sr-only">Cart</span>
-          <span id="cart-count-mobile" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+          <span id="cart-count-mobile" class="ml-1 text-xs bg-accent text-white rounded-full px-2 py-0.5">0</span>
         </button>
-        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-primary text-primary">
+        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-accent text-accent">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
 
-      <!-- Cart Button (desktop) -->
-      <div class="hidden md:flex items-center gap-2">
-        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+      <!-- Cart (desktop) -->
+      <div class="hidden md:flex items-center gap-4">
+        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-accent hover:shadow-sm transition flex items-center gap-2 text-accent hover:bg-accent hover:text-white">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="sr-only">Cart</span>
-          <span id="cart-count" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+          <span id="cart-count" class="ml-1 text-xs bg-accent text-white rounded-full px-2 py-0.5">0</span>
         </button>
       </div>
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="bg-secondary-dark border-t border-primary md:hidden">
+    <div id="mobile-menu" class="bg-primary border-t border-accent md:hidden">
       <div class="px-4 py-3 flex flex-col gap-2">
         <a href="#" class="py-2 nav-link no-select">Home</a>
         <a href="#books" class="py-2 nav-link no-select">Books</a>
@@ -1021,21 +1473,14 @@
     </div>
   </header>
 
-  <!-- Special Offer Banner (without timer) -->
-  <div class="bg-primary text-white text-center py-3 px-4">
-    <div class="container">
-      <span class="font-bold text-lg">30% OFF ON ALL BOOKS - LIMITED TIME OFFER!</span>
-    </div>
-  </div>
-
   <!-- Cart Modal - Full Screen -->
-  <dialog id="cart-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+  <dialog id="cart-modal" class="p-0 bg-white text-text-primary w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('cart-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
     <div class="container mx-auto py-6 px-4 h-full flex flex-col">
       <div class="cart-modal-header">
-        <h2 class="text-2xl font-bold text-secondary">YOUR CART</h2>
+        <h2 class="text-2xl font-bold text-primary">YOUR CART</h2>
         <p class="text-gray-600">Review your books before checkout</p>
       </div>
       
@@ -1048,14 +1493,14 @@
         </div>
         <div class="flex justify-between items-center text-lg">
           <p class="font-bold">Total:</p>
-          <p class="font-bold text-xl text-primary" id="cart-total">0 PKR</p>
+          <p class="font-bold text-xl text-accent" id="cart-total">0 PKR</p>
         </div>
       </div>
 
       <!-- Payment Method Dropdown -->
       <div class="mb-4">
         <label for="payment-method" class="block mb-2 font-medium">Select Payment Method:</label>
-        <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-dark">
+        <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-text-primary">
           <option value="">-- Select Payment Method --</option>
           <option value="jazzcash">JazzCash</option>
           <option value="easypaisa">Easypaisa</option>
@@ -1065,26 +1510,26 @@
 
       <div class="flex justify-between gap-4">
         <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1">Continue Shopping</button>
-        <button id="proceed-to-payment" class="px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1">Proceed to Checkout</button>
+        <button id="proceed-to-payment" class="px-6 py-3 rounded bg-accent hover:bg-accent-dark text-white transition flex-1">Proceed to Checkout</button>
       </div>
     </div>
   </dialog>
 
   <!-- Added to Cart Modal -->
-  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
+  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-text-primary max-w-md w-full shadow-xl">
     <div class="text-center">
       <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
       <h2 class="text-xl font-bold mb-2">Book Added to Cart!</h2>
       <p class="text-gray-600 mb-6" id="added-item-name">Your book has been successfully added to your cart.</p>
       <div class="flex justify-center gap-4">
         <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
-        <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
+        <button id="view-cart" class="px-4 py-2 rounded bg-accent hover:bg-accent-dark text-white">View Cart</button>
       </div>
     </div>
   </dialog>
 
   <!-- Product Detail Modal -->
-  <dialog id="product-detail-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+  <dialog id="product-detail-modal" class="p-0 bg-secondary text-text-primary w-full h-full shadow-xl">
     <button class="cart-modal-close" onclick="document.getElementById('product-detail-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
@@ -1096,7 +1541,7 @@
   <!-- Main Website Content -->
   <div id="main-content">
     <!-- Hero -->
-    <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
+    <section id="home" class="section relative bg-gradient-to-br from-primary to-gray-900 text-white">
       <div class="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1920&q=80" alt="Books background" class="w-full h-full object-cover opacity-10">
       </div>
@@ -1108,25 +1553,25 @@
         <!-- Trust badges -->
         <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <div class="trust-badge float-animation">
-            <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
+            <i class="fa-solid fa-bolt text-accent text-2xl mb-2"></i>
             <p class="text-sm">Instant Delivery</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 0.5s;">
-            <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
+            <i class="fa-solid fa-shield-halved text-accent text-2xl mb-2"></i>
             <p class="text-sm">100% Genuine</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 1s;">
-            <i class="fa-solid fa-headset text-primary text-2xl mb-2"></i>
+            <i class="fa-solid fa-headset text-accent text-2xl mb-2"></i>
             <p class="text-sm">24/7 Support</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 1.5s;">
-            <i class="fa-solid fa-lock text-primary text-2xl mb-2"></i>
+            <i class="fa-solid fa-lock text-accent text-2xl mb-2"></i>
             <p class="text-sm">Secure Payment</p>
           </div>
         </div>
 
-        <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-          <span class="font-bold text-primary">Special Limited Offer: 30% OFF on all books!</span>
+        <div class="mb-6 bg-accent/20 border border-accent rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+          <span class="font-bold text-accent">Special Limited Offer: 30% OFF on all books!</span>
         </div>
         <br>
         <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
@@ -1177,14 +1622,14 @@
           <div class="mb-6">
             <h3 class="text-xl font-bold mb-4">Contact Information</h3>
             <p class="text-gray-600 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
-            <p class="text-gray-600"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p>
+            <p class="text-gray-600"><i class="fa-solid fa-envelope text-accent mr-2"></i> Email: <strong>info@growzio.com</strong></p>
           </div>
           
           <div>
             <h3 class="text-xl font-bold mb-4">Follow Us</h3>
             <div class="flex justify-center gap-6 text-2xl">
               <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
+              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-accent hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
               <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
             </div>
           </div>
@@ -1193,7 +1638,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
+    <footer class="bg-primary text-gray-200 py-12 mt-16 border-t border-accent">
       <div class="container">
         <div class="grid md:grid-cols-4 gap-8">
           <div>
@@ -1204,19 +1649,19 @@
           <div>
             <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
             <ul class="space-y-2">
-              <li><a href="#" class="text-gray-300 hover:text-primary">Home</a></li>
-              <li><a href="#books" class="text-gray-300 hover:text-primary">Books</a></li>
-              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-accent">Home</a></li>
+              <li><a href="#books" class="text-gray-300 hover:text-accent">Books</a></li>
+              <li><a href="#contact" class="text-gray-300 hover:text-accent">Contact</a></li>
             </ul>
           </div>
           
           <div>
             <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
             <ul class="space-y-2">
-              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="terms-link">Terms of Service</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="refund-policy-link">Refund Policy</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="privacy-policy-link">Privacy Policy</a></li>
+              <li><a href="#contact" class="text-gray-300 hover:text-accent">Contact Us</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-accent">Terms of Service</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-accent">Refund Policy</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-accent">Privacy Policy</a></li>
             </ul>
           </div>
           
@@ -1224,8 +1669,8 @@
             <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
             <p class="mb-4">Subscribe to get special offers and new book updates</p>
             <form class="flex flex-col gap-2">
-              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400">
-              <button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button>
+              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-primary-dark border border-gray-600 text-white placeholder-gray-400">
+              <button type="submit" class="btn bg-accent hover:bg-accent-dark">Subscribe</button>
             </form>
           </div>
         </div>
@@ -1255,13 +1700,13 @@
   <!-- Payment Page (initially hidden) -->
   <div id="payment-page" class="hidden">
     <!-- Header -->
-    <header class="header bg-secondary">
+    <header class="header bg-primary">
       <div class="container mx-auto px-4 flex items-center justify-between py-3">
         <a href="#" class="font-extrabold text-xl text-white flex items-center">
-          <span class="text-primary mr-1">📚</span> GROWZIO BOOKS
+          <span class="text-accent mr-1">📚</span> GROWZIO BOOKS
         </a>
         <div class="flex items-center gap-4">
-          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
+          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-accent">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
           </a>
         </div>
@@ -1284,7 +1729,7 @@
             <div class="border-t border-gray-300 mt-4 pt-4">
               <div class="flex justify-between items-center text-lg">
                 <span class="font-bold">Total:</span>
-                <span class="font-bold text-xl text-primary" id="payment-total">0 PKR</span>
+                <span class="font-bold text-xl text-accent" id="payment-total">0 PKR</span>
               </div>
             </div>
           </div>
@@ -1292,7 +1737,7 @@
           <!-- Payment Options -->
           <div class="grid md:grid-cols-3 gap-6 mb-6">
             <!-- JazzCash Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-accent transition-colors">
               <div class="payment-logo mb-4">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5FPCt1eX4NPeEhoEEI_XIugL1Rf82_VV5w&s" alt="JazzCash" class="h-12 mx-auto">
               </div>
@@ -1309,13 +1754,13 @@
                 </div>
               </div>
               
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
+              <div class="payment-instruction bg-accent/10 p-3 rounded text-sm">
                 <p>After making the payment, please send the screenshot to our WhatsApp for verification.</p>
               </div>
             </div>
             
             <!-- Easypaisa Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-accent transition-colors">
               <div class="payment-logo mb-4">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa" class="h-12 mx-auto">
               </div>
@@ -1332,13 +1777,13 @@
                 </div>
               </div>
               
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
+              <div class="payment-instruction bg-accent/10 p-3 rounded text-sm">
                 <p>After making the payment, please send the screenshot to our WhatsApp for verification.</p>
               </div>
             </div>
             
             <!-- Binance Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
+            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-accent transition-colors">
               <div class="payment-logo mb-4">
                 <img src="https://public.bnbstatic.com/image/cms/blog/20190218/62cb8eb1-77bd-4b71-9519-f2f216d90b28.png" alt="Binance" class="h-12 mx-auto">
               </div>
@@ -1355,16 +1800,16 @@
                 </div>
               </div>
               
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
+              <div class="payment-instruction bg-accent/10 p-3 rounded text-sm">
                 <p>After making the payment, please send the transaction details to our WhatsApp for verification.</p>
               </div>
             </div>
           </div>
           
-          <button class="confirm-payment-btn w-full py-3 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg transition-colors" onclick="confirmPayment()">I've Made the Payment</button>
+          <button class="confirm-payment-btn w-full py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-lg transition-colors" onclick="confirmPayment()">I've Made the Payment</button>
           
           <div class="mt-4 text-center">
-            <button onclick="goBackToShopping()" class="text-primary hover:underline">
+            <button onclick="goBackToShopping()" class="text-accent hover:underline">
               <i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping
             </button>
           </div>
@@ -1373,7 +1818,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer bg-secondary text-white py-6 mt-8">
+    <footer class="footer bg-primary text-white py-6 mt-8">
       <div class="container mx-auto px-4 text-center">
         <p>© 2025 GROWZIO BOOKS. All rights reserved.</p>
         <p class="text-gray-300 mt-2">WhatsApp: +92 319 5179084</p>
@@ -1402,6 +1847,7 @@ function pkrToUsd(pkr) {
 // BOOKS DATA - All prices in both PKR and USD
 const books = [
   {
+    id: 1,
     name: "DIGITAL MARKETING ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioLOtx1eiRvFaUA0LkZbanK19h6HgWVb1iwJsbhVJK20c5w1YFlrkAlBYtBo-o71aS6W79s4NGJ6OxpuAu2Q5TyTVTHoK5vf0cLQvq6lQHGNpOFvhwDRkxYt28IbP-6GTE-PTL8m3DN-AkdFS0dUDLtT5V6hyphenhyphenBLHtd2ccTFrRLP4JvxBmA1AppoTGtQpE/s320/roadmapstyle.PNG",
     desc: "Complete guide to digital marketing strategies, channels, and tools",
@@ -1418,6 +1864,7 @@ const books = [
     ]
   },
   {
+    id: 2,
     name: "WEB DEVELOPER ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%2028,%202025,%2005_28_39%20AM.png",
     desc: "Complete guide to becoming a full-stack web developer",
@@ -1434,6 +1881,7 @@ const books = [
     ]
   },
   {
+    id: 3,
     name: "CYBERSECURITY ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     desc: "Complete guide to cybersecurity fundamentals and career paths",
@@ -1450,6 +1898,7 @@ const books = [
     ]
   },
   {
+    id: 4,
     name: "UX/UI DESIGN ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgS6PWKk1N08_6YqhgrXdJaqzab9lJqPbhR2tYSDgz5Bpw0alwIHRI9qcrIhaMd4qbxUnuEgmXbSrdX7Yffw-gZYlmLXRrcl_g3vDuqNxAbo7jsjtxzFuQUHtKBChv_zFJOY5oh302fi319XH8E8Kap6TcUtw9U6Mp_POpc9jf4e_3UVDpFevN1oPfH-2Y/s2000/Growzio%20(6).png",
     desc: "Complete guide to user experience and interface design",
@@ -1466,6 +1915,7 @@ const books = [
     ]
   },
   {
+    id: 5,
     name: "PROMPT ENGINER'S ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7y8ow6jBDHbIaZmrWHYqCQdTAGtN3mj5O8Y3MLCruVNKVAPEBwN7SYa7LKKHbmIeqbDDbk5HXqjVOelx8OmagDCKHM_RS6-oRHcuJYBu7qrd8QnsV8WvuZqY2T5vyrCkeV9T2SxOpt7ubn_y3LxZnHwPLZgKm3mOovgQhX6nsJKIRyxhT0VBmBsXFYqk/s2000/Untitled%20design%20(6).png",
     desc: "Master the art of AI prompt engineering for optimal results",
@@ -1482,6 +1932,7 @@ const books = [
     ]
   },
   {
+    id: 6,
     name: "COPYWRITING ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0Ifxu5ZQtfUCk1dbqigJadiIerrTLUFZkeMil6_SDzwWVSgKQRHNez3JWhdMaYCOeknGH64uhh-2CET4GPfJJHS1jAKadMP1Bb7gzaHyBOUMR4-uUdJNqLCqdt_CqwoAtXMYUUAVfiVzlN12UZo8gblAmbrMM0QOwcn3D80mp4SdTDAntx_6jyFONIwQ/s1024/copywriting.771Z.png",
     desc: "Complete guide to persuasive writing and marketing copy",
@@ -1498,6 +1949,7 @@ const books = [
     ]
   },
   {
+    id: 7,
     name: "GRAPHIC DESIGNING ROADMAP",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_a3g2aGIKWvt4JVxzkJw9WrcGxSc9gJg0tZvog2gQS9qFoskxTDOSjJ3jOWhTy7PJke6_b5HE7RekodSC88VrIZFzFQdkytLYK3KmNx9At0cPGOBkPaclbdnaXqcHwqMoqEOf4kLq2VffyHaXqmY4qTJQB_VcelxJLP9QIksrp1UbzviUDWFZ5M7FFkM/s2000/Unlock%20your%20creative%20potential%20with%20%E2%80%9CGraphic%20Designing%20Roadmap%E2%80%9D%20by%20Growzio%20%E2%80%94%20a%20step-by-step%20guide%20to%20mastering%20design%20tools,%20principles,%20and%20techniques%20to%20become%20a%20professional%20designer..png",
     desc: "Complete guide to visual design principles and tools",
@@ -1514,6 +1966,7 @@ const books = [
     ]
   },
   {
+    id: 8,
     name: "ADVANCED AI TOOLS USAGE",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifljGQ1arhuK8dCDvbUYYRz12C-eNAbccfKaYxKH8JcLnricm-E7akgJBE_EWwRoPR-yl4aiZ52HwgEZyTOu__fxA7bprC5q9EH7LqcBWwrlhMn2rOf_xsNwO0GnhbHSQI439FCAILZFNGmnGKlNdguhduRfrgNAs3cvhZgWLSoLrMy6hYUq-RMSuRA18/s2000/%F0%9F%A4%96%20Unlock%20the%20true%20potential%20of%20Artificial%20Intelligence%20with%20real-world%20tools%20and%20strategies..png",
     desc: "Master advanced AI tools for productivity and creativity",
@@ -1530,6 +1983,7 @@ const books = [
     ]
   },
   {
+    id: 9,
     name: "ADVERTISING MASTERY",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1ylyrhwJNhqvLioHWl53d-EmgY7gO-WgBjHEYZP5upNDItXp0TguqQsbFxYNawq2Na-4nBk2ndm7bSpakCKY4k6xb9FAqrLhH2loDTN2bh0Lx-RVpi4dEIjmW42EvB2M-lDX_GsxO4p57spJ7NTGdezNw1D2ifSubs2MAPeWPUsCC_c3tjIM0R1gMcaQ/s2000/Growzio%20(7).png",
     desc: "Complete guide to effective advertising strategies",
@@ -1546,6 +2000,7 @@ const books = [
     ]
   },
   {
+    id: 10,
     name: "SOCIAL MEDIA ACCOUNT MANAGEMENT",
     img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJoCABazpjgmRzmbzJ0uiwW7ApNEgMO1nm_HaAEJNJibCJFeee9z8b0EK6nfaMyf5yOzsItCcpYsnhh2lCOZcEO9eHKZtpsFT0T27cvpoo_bOJII39mr0TLIBqFHxQ7wEiRagMQohzaOXJ6WnTCrNaTNPkihtX0CDugYcyAmxdJEtkfkrDdZv_mChEFxs/s2000/Untitled%20design%20(7).png",
     desc: "Professional social media management and growth strategies",
@@ -1564,61 +2019,497 @@ const books = [
 ];
 
 /* -------------------------
+   Enhanced Book Detail Manager
+   ------------------------- */
+class BookDetailManager {
+  constructor() {
+    this.currentBook = null;
+    this.setupDetailModal();
+  }
+  
+  setupDetailModal() {
+    // Replace existing modal with enhanced version
+    const modal = document.getElementById('product-detail-modal');
+    if (modal) {
+      modal.innerHTML = `
+        <div class="book-detail-container">
+          <button class="cart-modal-close" onclick="document.getElementById('product-detail-modal').close()">
+            <i class="fa-solid fa-times"></i>
+          </button>
+          <div class="book-detail-content">
+            <div class="book-detail-header">
+              <div class="book-cover-large">
+                <img id="detail-book-cover" src="" alt="">
+                <div class="book-badges">
+                  <span class="bestseller-badge">Bestseller</span>
+                  <span class="discount-badge">30% OFF</span>
+                </div>
+              </div>
+              <div class="book-info-main">
+                <h1 id="detail-book-title"></h1>
+                <div class="book-meta">
+                  <span class="book-category" id="detail-book-category"></span>
+                  <div class="book-rating">
+                    <div class="stars" id="detail-book-rating">★★★★★</div>
+                    <span class="rating-count">(0 reviews)</span>
+                  </div>
+                </div>
+                <p class="book-description" id="detail-book-description"></p>
+                
+                <div class="book-features">
+                  <div class="feature">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Digital Format</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Instant Delivery</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Read on Any Device</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-section">
+                  <div class="price-original" id="detail-original-price"></div>
+                  <div class="price-current">
+                    <span class="price-pkr" id="detail-current-price"></span>
+                    <span class="price-usd" id="detail-current-usd"></span>
+                  </div>
+                </div>
+                
+                <div class="action-buttons">
+                  <button class="btn-primary add-to-cart-large" id="detail-add-to-cart">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    Add to Cart
+                  </button>
+                  <button class="btn-secondary add-to-wishlist" id="detail-add-to-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    Wishlist
+                  </button>
+                  <button class="btn-outline preview-book" id="detail-preview">
+                    <i class="fa-solid fa-book-open"></i>
+                    Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="book-detail-tabs">
+              <div class="tabs-header">
+                <button class="tab-btn active" data-tab="description">Description</button>
+                <button class="tab-btn" data-tab="preview">Preview</button>
+                <button class="tab-btn" data-tab="reviews">Reviews</button>
+                <button class="tab-btn" data-tab="recommendations">Similar Books</button>
+              </div>
+              
+              <div class="tabs-content">
+                <div class="tab-panel active" id="tab-description">
+                  <div id="detail-full-description"></div>
+                  <div class="what-you-get">
+                    <h3>What You'll Get</h3>
+                    <ul id="detail-features-list"></ul>
+                  </div>
+                </div>
+                
+                <div class="tab-panel" id="tab-preview">
+                  <div class="book-preview">
+                    <div class="preview-header">
+                      <h3>Read First Chapter</h3>
+                      <div class="reader-controls">
+                        <button class="reader-btn" data-action="font-smaller">A-</button>
+                        <button class="reader-btn" data-action="font-larger">A+</button>
+                        <button class="reader-btn" data-action="theme-toggle">
+                          <i class="fa-solid fa-moon"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="preview-content" id="book-preview-content">
+                      <!-- Preview content will be loaded here -->
+                    </div>
+                    <div class="preview-actions">
+                      <button class="btn-primary" id="buy-to-continue">Buy Book to Continue Reading</button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="tab-panel" id="tab-reviews">
+                  <div class="reviews-section">
+                    <div class="reviews-summary">
+                      <div class="average-rating">
+                        <div class="rating-large">0.0</div>
+                        <div class="stars-large">★★★★★</div>
+                        <div class="rating-count">0 reviews</div>
+                      </div>
+                      <div class="rating-bars">
+                        <!-- Rating distribution bars -->
+                      </div>
+                    </div>
+                    <div class="reviews-list" id="reviews-list">
+                      <!-- Reviews will be loaded here -->
+                    </div>
+                    <button class="btn-outline write-review-btn">Write a Review</button>
+                  </div>
+                </div>
+                
+                <div class="tab-panel" id="tab-recommendations">
+                  <div class="similar-books-grid" id="similar-books">
+                    <!-- Similar books will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  }
+  
+  async showBookDetail(bookId) {
+    const book = books.find(b => b.id === bookId) || books[0]; // Fallback
+    this.currentBook = book;
+    
+    // Populate modal with book data
+    this.populateBookData(book);
+    
+    // Show modal
+    const modal = document.getElementById('product-detail-modal');
+    modal.showModal();
+    
+    // Load additional data
+    this.loadBookPreview(book);
+    this.loadReviews(book);
+    this.loadSimilarBooks(book);
+  }
+  
+  populateBookData(book) {
+    // Populate all book data in the modal
+    document.getElementById('detail-book-title').textContent = book.name;
+    document.getElementById('detail-book-cover').src = book.img;
+    document.getElementById('detail-book-category').textContent = this.formatCategory(book.category);
+    document.getElementById('detail-book-description').textContent = book.desc;
+    document.getElementById('detail-full-description').textContent = book.details;
+    
+    // Pricing
+    document.getElementById('detail-original-price').textContent = `PKR ${book.originalPrice}`;
+    document.getElementById('detail-current-price').textContent = `PKR ${book.discountedPrice}`;
+    document.getElementById('detail-current-usd').textContent = `(~$${pkrToUsd(book.discountedPrice)} USD)`;
+    
+    // Features list
+    const featuresList = document.getElementById('detail-features-list');
+    if (book.features) {
+      featuresList.innerHTML = book.features.map(feature => 
+        `<li>${feature}</li>`
+      ).join('');
+    }
+    
+    // Add event listeners
+    document.getElementById('detail-add-to-cart').onclick = () => this.addToCart(book);
+    document.getElementById('detail-add-to-wishlist').onclick = () => this.addToWishlist(book);
+    document.getElementById('detail-preview').onclick = () => this.showPreview(book);
+    
+    // Tab functionality
+    this.setupDetailTabs();
+  }
+  
+  setupDetailTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and panels
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding panel
+        btn.classList.add('active');
+        const tabName = btn.dataset.tab;
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+      });
+    });
+  }
+  
+  loadBookPreview(book) {
+    // In a real implementation, this would fetch preview content from an API
+    const previewContent = document.getElementById('book-preview-content');
+    previewContent.innerHTML = `
+      <div class="preview-placeholder">
+        <h2>Chapter 1: Introduction</h2>
+        <p>Welcome to "${book.name}"! This is a preview of the first chapter.</p>
+        <p>In a full implementation, this would show the actual first chapter or sample pages of the book with proper formatting and styling.</p>
+        <p>You would be able to read several pages to get a feel for the book's content and writing style before making a purchase decision.</p>
+        <p>The preview reader includes controls to adjust font size and switch between light and dark modes for comfortable reading.</p>
+      </div>
+    `;
+    
+    // Setup reader controls
+    this.setupReaderControls();
+  }
+  
+  setupReaderControls() {
+    const readerControls = document.querySelectorAll('.reader-btn');
+    readerControls.forEach(control => {
+      control.addEventListener('click', () => {
+        const action = control.dataset.action;
+        const content = document.getElementById('book-preview-content');
+        
+        switch(action) {
+          case 'font-smaller':
+            this.adjustFontSize(content, -1);
+            break;
+          case 'font-larger':
+            this.adjustFontSize(content, 1);
+            break;
+          case 'theme-toggle':
+            this.toggleReaderTheme(content, control);
+            break;
+        }
+      });
+    });
+  }
+  
+  adjustFontSize(content, change) {
+    const currentSize = parseFloat(getComputedStyle(content).fontSize);
+    const newSize = Math.max(14, Math.min(24, currentSize + change));
+    content.style.fontSize = `${newSize}px`;
+  }
+  
+  toggleReaderTheme(content, button) {
+    content.classList.toggle('night-mode');
+    const icon = button.querySelector('i');
+    if (content.classList.contains('night-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      content.style.backgroundColor = '#1a1a1a';
+      content.style.color = '#e0e0e0';
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      content.style.backgroundColor = '';
+      content.style.color = '';
+    }
+  }
+  
+  async loadReviews(book) {
+    // Mock reviews - replace with API call
+    const reviews = [
+      {
+        id: 1,
+        user: 'Reader123',
+        rating: 5,
+        comment: 'Excellent book! Very comprehensive and well-structured. The examples are practical and easy to follow.',
+        date: '2024-01-15',
+        verified: true
+      },
+      {
+        id: 2,
+        user: 'BookLover',
+        rating: 4,
+        comment: 'Good content, but could use more examples. Overall, a valuable resource for beginners.',
+        date: '2024-01-10',
+        verified: false
+      },
+      {
+        id: 3,
+        user: 'TechEnthusiast',
+        rating: 5,
+        comment: 'Exactly what I was looking for! The step-by-step approach made complex topics easy to understand.',
+        date: '2024-01-05',
+        verified: true
+      }
+    ];
+    
+    const reviewsList = document.getElementById('reviews-list');
+    reviewsList.innerHTML = reviews.map(review => `
+      <div class="review-item">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <span class="reviewer-name">${review.user}</span>
+            ${review.verified ? '<span class="verified-badge">Verified Purchase</span>' : ''}
+          </div>
+          <div class="review-meta">
+            <div class="review-stars">${this.generateStars(review.rating)}</div>
+            <span class="review-date">${review.date}</span>
+          </div>
+        </div>
+        <div class="review-content">
+          <p>${review.comment}</p>
+        </div>
+      </div>
+    `).join('');
+    
+    // Update rating summary
+    const avgRating = (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1);
+    document.querySelector('.rating-large').textContent = avgRating;
+    document.querySelector('.rating-count').textContent = `${reviews.length} reviews`;
+  }
+  
+  loadSimilarBooks(book) {
+    const similarBooks = books.filter(b => 
+      b.category === book.category && b.id !== book.id
+    ).slice(0, 4);
+    
+    const similarContainer = document.getElementById('similar-books');
+    if (similarBooks.length === 0) {
+      similarContainer.innerHTML = '<p>No similar books found.</p>';
+      return;
+    }
+    
+    similarContainer.innerHTML = similarBooks.map(book => `
+      <div class="similar-book-card">
+        <img src="${book.img}" alt="${book.name}">
+        <h4>${book.name}</h4>
+        <div class="similar-book-price">PKR ${book.discountedPrice}</div>
+        <button class="view-details-btn view-similar-book" data-id="${book.id}">View Details</button>
+      </div>
+    `).join('');
+    
+    // Add event listeners to similar book buttons
+    document.querySelectorAll('.view-similar-book').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const bookId = parseInt(btn.dataset.id);
+        this.showBookDetail(bookId);
+      });
+    });
+  }
+  
+  generateStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+  }
+  
+  formatCategory(category) {
+    return category.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  }
+  
+  addToCart(book) {
+    // Use the existing cart functionality
+    const btn = document.createElement('button');
+    btn.dataset.name = book.name;
+    btn.dataset.price = book.discountedPrice;
+    btn.dataset.id = book.id;
+    
+    const event = new Event('click');
+    btn.dispatchEvent(event);
+    
+    // Close the modal after adding to cart
+    setTimeout(() => {
+      document.getElementById('product-detail-modal').close();
+    }, 1500);
+  }
+  
+  addToWishlist(book) {
+    // In a full implementation, this would add to user's wishlist
+    alert(`"${book.name}" has been added to your wishlist!`);
+  }
+  
+  showPreview(book) {
+    // Switch to the preview tab
+    document.querySelector('.tab-btn[data-tab="preview"]').click();
+  }
+}
+
+/* -------------------------
    Utility & Rendering
    ------------------------- */
 function renderBooks(filterCategory = 'all') {
   const container = document.getElementById('books-list');
-  container.innerHTML = '';
   
-  const filteredBooks = filterCategory === 'all' 
-    ? books 
-    : books.filter(book => book.category === filterCategory);
+  // Show skeleton loading
+  container.innerHTML = `
+    <div class="book-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text" style="width: 70%"></div>
+    </div>
+    <div class="book-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text" style="width: 70%"></div>
+    </div>
+    <div class="book-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text" style="width: 70%"></div>
+    </div>
+  `;
   
-  filteredBooks.forEach((book, i) => {
-    const usdPrice = pkrToUsd(book.discountedPrice);
+  // Simulate loading delay
+  setTimeout(() => {
+    container.innerHTML = '';
     
-    const card = document.createElement('div');
-    card.className = 'book-card';
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('data-aos-delay', (i % 4) * 100);
+    const filteredBooks = filterCategory === 'all' 
+      ? books 
+      : books.filter(book => book.category === filterCategory);
     
-    card.innerHTML = `
-      <div class="book-product-container">
-        <div class="book-product">
-          <div class="book-product-front">
-            <img src="${book.img}" alt="${book.name}">
-          </div>
-          <div class="book-product-back">
-            <h3>Book Details</h3>
-            <p>${book.details.substring(0, 150)}...</p>
-            <p class="mt-2"><strong>Category:</strong> ${book.category.replace('-', ' ').toUpperCase()}</p>
+    filteredBooks.forEach((book, i) => {
+      const usdPrice = pkrToUsd(book.discountedPrice);
+      
+      const card = document.createElement('div');
+      card.className = 'book-card';
+      card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('data-aos-delay', (i % 4) * 100);
+      
+      card.innerHTML = `
+        <div class="book-product-container">
+          <div class="book-product">
+            <div class="book-product-front">
+              <img src="${book.img}" alt="${book.name}">
+            </div>
+            <div class="book-product-back">
+              <h3>Book Details</h3>
+              <p>${book.details.substring(0, 150)}...</p>
+              <p class="mt-2"><strong>Category:</strong> ${book.category.replace('-', ' ').toUpperCase()}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <h2>${book.name}</h2>
-      <div class="dual-price-container">
-        <div class="book-original-price">PKR ${book.originalPrice}</div>
-        <div class="book-sale-price">
-          <div class="price-pkr">PKR ${book.discountedPrice}</div>
-          <div class="price-usd">(~$${usdPrice} USD)</div>
+        <h2>${book.name}</h2>
+        <div class="dual-price-container">
+          <div class="book-original-price">PKR ${book.originalPrice}</div>
+          <div class="book-sale-price">
+            <div class="price-pkr">PKR ${book.discountedPrice}</div>
+            <div class="price-usd">(~$${usdPrice} USD)</div>
+          </div>
         </div>
-      </div>
-      <button class="book-btn add-to-cart" data-name="${book.name}" data-price="${book.discountedPrice}">Add to Cart</button>
-      <button class="view-details-btn" data-product='${JSON.stringify(book).replace(/'/g, "\\'")}'>View Details</button>
-    `;
-    
-    container.appendChild(card);
-  });
-  
-  // Add flip functionality
-  const bookContainers = document.querySelectorAll('.book-product-container');
-  bookContainers.forEach(container => {
-    container.addEventListener('click', function() {
-      const bookCard = this.closest('.book-card');
-      bookCard.classList.toggle('flipped');
+        <button class="book-btn add-to-cart" data-name="${book.name}" data-price="${book.discountedPrice}" data-id="${book.id}">Add to Cart</button>
+        <button class="view-details-btn" data-id="${book.id}">View Details</button>
+      `;
+      
+      container.appendChild(card);
     });
-  });
+    
+    // Add flip functionality
+    const bookContainers = document.querySelectorAll('.book-product-container');
+    bookContainers.forEach(container => {
+      container.addEventListener('click', function() {
+        const bookCard = this.closest('.book-card');
+        bookCard.classList.toggle('flipped');
+      });
+    });
+    
+    // Add event listeners to view details buttons
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const bookId = parseInt(btn.dataset.id);
+        bookDetailManager.showBookDetail(bookId);
+      });
+    });
+  }, 800);
 }
+
+// Initialize book detail manager
+const bookDetailManager = new BookDetailManager();
 
 // Render books when page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -1644,37 +2535,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const category = this.getAttribute('data-category');
       renderBooks(category);
     });
-  });
-
-  // Add event listeners for policy links
-  document.getElementById('privacy-policy-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    const modal = document.getElementById('privacy-policy-modal');
-    try { 
-      modal.showModal(); 
-    } catch(err) { 
-      console.warn(err); 
-    }
-  });
-
-  document.getElementById('terms-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    const modal = document.getElementById('terms-modal');
-    try { 
-      modal.showModal(); 
-    } catch(err) { 
-      console.warn(err); 
-    }
-  });
-
-  document.getElementById('refund-policy-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    const modal = document.getElementById('refund-policy-modal');
-    try { 
-      modal.showModal(); 
-    } catch(err) { 
-      console.warn(err); 
-    }
   });
 });
 
@@ -1711,24 +2571,26 @@ document.addEventListener('click', e => {
     const btn = e.target.closest('.add-to-cart');
     const name = btn.dataset.name; 
     const price = parseInt(btn.dataset.price);
+    const id = parseInt(btn.dataset.id);
     
     // Check if item already exists in cart
-    const existingItem = cart.find(item => item.name === name);
+    const existingItem = cart.find(item => item.id === id);
     
     if(existingItem) {
       // If item exists, increase quantity
       existingItem.quantity += 1;
     } else {
       // If item doesn't exist, add it with quantity 1
-      cart.push({name, price, quantity: 1});
+      cart.push({id, name, price, quantity: 1});
     }
     
     updateCartDisplays();
     
     // Show added feedback on button
+    const originalText = btn.innerHTML;
     btn.innerHTML = '<span class="loading"></span> Added';
     setTimeout(() => {
-      btn.textContent = 'Add to Cart';
+      btn.innerHTML = originalText;
     }, 1500);
     
     // Show the added to cart modal
@@ -2023,66 +2885,6 @@ document.querySelectorAll("a[href^='#']").forEach(a => {
       }); 
     }
   });
-});
-
-/* -------------------------
-   Product Detail Modal
-   ------------------------- */
-document.addEventListener('click', function(e) {
-  if (e.target.matches('.view-details-btn') || e.target.closest('.view-details-btn')) {
-    const btn = e.target.closest('.view-details-btn');
-    const productData = JSON.parse(btn.dataset.product);
-    
-    // Populate the modal with product details
-    const modalContent = document.getElementById('product-detail-content');
-    const usdPrice = pkrToUsd(productData.discountedPrice);
-    
-    let featuresHTML = '';
-    if (productData.features) {
-      featuresHTML = `
-        <div class="mt-4">
-          <h3 class="font-bold mb-2 text-secondary">What You'll Learn:</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            ${productData.features.map(feature => `<li>${feature}</li>`).join('')}
-          </ul>
-        </div>
-      `;
-    }
-    
-    modalContent.innerHTML = `
-      <div class="flex flex-col md:flex-row gap-6">
-        <div class="md:w-1/3">
-          <img src="${productData.img}" alt="${productData.name}" class="w-full rounded-lg shadow-md">
-        </div>
-        <div class="md:w-2/3">
-          <h2 class="text-2xl font-bold mb-2 text-secondary">${productData.name}</h2>
-          <p class="text-gray-600 mb-4">${productData.desc}</p>
-          <div class="mb-4">
-            <span class="original-price">${productData.originalPrice} PKR</span>
-            <div class="dual-currency">
-              <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
-              <span class="price-usd">~$${usdPrice} USD</span>
-            </div>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg mb-4">
-            <h3 class="font-bold mb-2 text-secondary">Book Details</h3>
-            <p class="text-gray-700">${productData.details}</p>
-            <p class="mt-2"><strong>Category:</strong> ${productData.category.replace('-', ' ').toUpperCase()}</p>
-            ${featuresHTML}
-          </div>
-          <button class="add-to-cart btn w-full" data-name="${productData.name}" data-price="${productData.discountedPrice}">Add to Cart</button>
-        </div>
-      </div>
-    `;
-    
-    // Show the modal
-    const modal = document.getElementById('product-detail-modal');
-    try { 
-      modal.showModal(); 
-    } catch(err) { 
-      console.warn(err); 
-    }
-  }
 });
 
 /* -------------------------
